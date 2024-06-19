@@ -8,20 +8,56 @@ fn main() -> ! {
     let dp = arduino_hal::Peripherals::take().unwrap();
     let pins = arduino_hal::pins!(dp);
 
-    /*
-     * For examples (and inspiration), head to
-     *
-     *     https://github.com/Rahix/avr-hal/tree/main/examples
-     *
-     * NOTE: Not all examples were ported to all boards!  There is a good chance though, that code
-     * for a different board can be adapted for yours.  The Arduino Uno currently has the most
-     * examples available.
-     */
-
-    let mut led = pins.d13.into_output();
+    let mut blue_pin = pins.d13.into_output();
+    let mut green_pin = pins.d12.into_output();
+    let mut red_pin = pins.d11.into_output();
 
     loop {
-        led.toggle();
+        // blue
+        blue_pin.toggle();
         arduino_hal::delay_ms(1000);
+        blue_pin.toggle();
+
+        // green
+        green_pin.toggle();
+        arduino_hal::delay_ms(1000);
+        green_pin.toggle();
+
+        // red
+        red_pin.toggle();
+        arduino_hal::delay_ms(1000);
+        red_pin.toggle();
+
+        // blue + green
+        blue_pin.toggle();
+        green_pin.toggle();
+        arduino_hal::delay_ms(1000);
+        blue_pin.toggle();
+        green_pin.toggle();
+
+        // blue + red
+        blue_pin.toggle();
+        red_pin.toggle();
+        arduino_hal::delay_ms(1000);
+        blue_pin.toggle();
+        red_pin.toggle();
+
+        // green + red
+        green_pin.toggle();
+        red_pin.toggle();
+        arduino_hal::delay_ms(1000);
+        green_pin.toggle();
+        red_pin.toggle();
+
+        // blue + green + red
+        blue_pin.toggle();
+        green_pin.toggle();
+        red_pin.toggle();
+        arduino_hal::delay_ms(1000);
+        blue_pin.toggle();
+        green_pin.toggle();
+        red_pin.toggle();
+        
+
     }
 }
